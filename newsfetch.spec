@@ -6,7 +6,7 @@ Release:	1
 Copyright:	shareware
 Group:		Applications/News
 Source:		ftp://sunsite.unc.edu/pub/Linux/system/news/readers/%{name}-%{version}.tar.gz
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Newsfetch is a powerfull utility to fetch news from an NNTP server and
