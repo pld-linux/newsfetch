@@ -5,7 +5,7 @@ Version:	1.11
 Release:	1
 Copyright:	shareware
 Group:		Applications/News
-Source:		ftp://sunsite.unc.edu/pub/Linux/system/news/readers/newsfetch-1.11.tar.gz
+Source:		ftp://sunsite.unc.edu/pub/Linux/system/news/readers/%{name}-%{version}.tar.gz
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -27,13 +27,18 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -s newsfetch /usr/bin/newsfetch
-install newsfetch.1 /usr/man/man1
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
+
+install -s newsfetch $RPM_BUILD_ROOT%{_bindir}/newsfetch
+install newsfetch.1 $RPM_BUILD_ROOT%{_mandir}/man1
+
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* README CHANGES
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%doc README CHANGES
-/usr/bin/newsfetch
-/usr/man/man1/newsfetch.1
+%defattr(644,root,root,755)
+%doc README.gz CHANGES.gz
+%attr(755,root,root) %{_bindir}/newsfetch
+%{_mandir}/man1/newsfetch.1.gz
