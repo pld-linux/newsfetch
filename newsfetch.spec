@@ -5,8 +5,6 @@ Version:	1.21
 Release:	1
 License:	shareware
 Group:		Applications/News
-Group(de):	Applikationen/News
-Group(pl):	Aplikacje/News
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/news/readers/%{name}-%{version}.tar.gz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
