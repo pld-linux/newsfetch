@@ -1,7 +1,7 @@
 Summary:	Most Compact and Powerfull newsfetching utility 
 Summary(pl):	Narzêdzie do przesy³ania artyku³ów NEWS
 Name:		newsfetch
-Version:	1.11
+Version:	1.21
 Release:	1
 Copyright:	shareware
 Group:		Applications/News
