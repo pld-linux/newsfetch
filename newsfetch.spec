@@ -6,6 +6,7 @@ Release:	2
 License:	Shareware
 Group:		Applications/News
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/news/readers/%{name}-%{version}.tar.gz
+# Source0-md5:	e343a34d50d0c304f939938a8ee6cbaf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
