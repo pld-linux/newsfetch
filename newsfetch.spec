@@ -2,11 +2,12 @@ Summary:	Most Compact and Powerfull newsfetching utility
 Summary(pl):	Narzêdzie do przesy³ania artyku³ów NEWS
 Name:		newsfetch
 Version:	1.21
-Release:	2
-License:	Shareware
+Release:	3
+License:	Distributable
 Group:		Applications/News
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/news/readers/%{name}-%{version}.tar.gz
 # Source0-md5:	e343a34d50d0c304f939938a8ee6cbaf
+Patch0:		%{name}-gcc3.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -22,6 +23,7 @@ przez dowolnego klienta pocztowego.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__make}
