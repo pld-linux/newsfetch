@@ -3,7 +3,7 @@ Summary(pl):	Narzêdzie do przesy³ania artyku³ów NEWS
 Name:		newsfetch
 Version:	1.21
 Release:	1
-Copyright:	shareware
+License:	shareware
 Group:		Applications/News
 Group(de):	Applikationen/News
 Group(pl):	Aplikacje/News
