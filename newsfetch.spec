@@ -24,7 +24,7 @@ przez dowolnego klienta pocztowego.
 %setup -q
 
 %build
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
