@@ -5,6 +5,7 @@ Version:	1.21
 Release:	1
 Copyright:	shareware
 Group:		Applications/News
+Group(de):	Applikationen/News
 Group(pl):	Aplikacje/News
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/news/readers/%{name}-%{version}.tar.gz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -30,16 +31,16 @@ przez dowolnego klienta pocztowego.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 
-install -s newsfetch $RPM_BUILD_ROOT%{_bindir}/newsfetch
+install newsfetch $RPM_BUILD_ROOT%{_bindir}/newsfetch
 install newsfetch.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* README CHANGES
+gzip -9nf README CHANGES
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.gz CHANGES.gz
+%doc *.gz
 %attr(755,root,root) %{_bindir}/newsfetch
-%{_mandir}/man1/newsfetch.1.gz
+%{_mandir}/man1/newsfetch.1*
