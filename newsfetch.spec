@@ -1,5 +1,5 @@
 Summary:	Most Compact and Powerfull newsfetching utility
-Summary(pl.UTF-8):   Narzędzie do przesyłania artykułów NEWS
+Summary(pl.UTF-8):	Narzędzie do przesyłania artykułów NEWS
 Name:		newsfetch
 Version:	1.21
 Release:	3
