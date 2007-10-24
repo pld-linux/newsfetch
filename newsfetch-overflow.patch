@@ -1,0 +1,72 @@
+--- newsfetch-1.21/nntp.c.old	2007-10-23 20:42:11.000000000 +0200
++++ newsfetch-1.21/nntp.c	2007-10-23 20:51:54.000000000 +0200
+@@ -40,7 +40,7 @@ return(get_error(command_buf));
+ 
+ get_error(char *buf)
+ {
+-int result;
++int result = 0;
+ 	sscanf(buf,"%d",&result);
+ 	if(result >= 200 && result < 300)
+ 		return(1);
+@@ -52,7 +52,7 @@ return(0); 
+ 
+ get_error1(char *buf)
+ {
+-int result;
++int result = 0;
+ 	sscanf(buf,"%d",&result);
+ 	if(result >= 200 && result < 300)
+ 		return(1);
+@@ -61,7 +61,7 @@ return(0); 
+ 
+ get_error2(char *buf)
+ {
+-int result, space=0x20;
++int result = 0, space=0x20;
+ char *errMsg; 
+ 
+ 	sscanf(buf,"%d",&result);
+@@ -77,14 +77,14 @@ return(0); 
+ 
+ set_article_number(char *buf)
+ {
+-int result;
++int result = 0;
+ 	sscanf(buf,"%d %d",&result, &first_article);
+ 		return(1);
+ }
+ 
+ FILE * getNewsFileFd()
+ {
+-char news_filename[200];
++char news_filename[1024];
+ FILE *newsfp;
+ 	
+ 	if(news_target == 2 || news_target == 3)
+@@ -148,7 +148,7 @@ return(items_read);
+ 
+ checkGroup()
+ {
+-int first_art, last_art, total_art, tmp ;
++int first_art = -1, last_art = -1, total_art = -1, tmp = -1;
+ 
+ 	fprintf(stderr,"%s: ",group);
+ 	fprintf(socket_fp[0],"GROUP %s\n",group);
+@@ -334,12 +334,14 @@ char groupname[100];
+ 	if(!get_error2(command_buf))
+ 		exit(1);	
+ 	readNNTPdata();
+-	sscanf(command_buf,"%s",groupname);
++	sscanf(command_buf,"%99s",groupname);
++	groupname[99] = '\0';
+ 	while(command_buf[0] != '.' || command_buf[1] != 13 )/*|| command_buf[1] != 10)*/
+ 		{
+ 		fprintf(stderr,"%s\n",groupname);
+ 		readNNTPdata();
+-		sscanf(command_buf,"%s",groupname);
++		sscanf(command_buf,"%99s",groupname);
++		groupname[99] = '\0';
+ 		}
+ exit(1);
+ 
